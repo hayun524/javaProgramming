@@ -15,10 +15,22 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class Main {
-
-	public static void consoleGame(Player p1, Player p2,Player p3, Player p4, Weapon w1, Weapon w2, Weapon w3,Weapon w4) {
+	
+	public static void main(String[] args) {
+		//main에서 캐릭터, 무기 생성하고 ConsoleGame에다 전달하는 식으로 수정
 		
-		
+		//캐릭터 생성 (이름, HP, power, 전용무기)
+		Steve p1 = new Steve("스티브",150,15,"검");
+		Skeleton p2 = new Skeleton("스켈레톤",130,20,"활");
+		Creeper p3 = new Creeper("크리퍼",100,50,"폭탄");
+		Zombie p4 = new Zombie("좀비",180,10,"독");
+				
+				//무기 생성(이름, 내구도, power)
+		Sword w1 = new Sword("검", 3, 3);
+		Bow w2 = new Bow("활", 3, 2);
+		Bomb w3 = new Bomb("폭탄", 3, 1);
+		Poison w4 = new Poison("독", 3, 5);
+				
 		//ArrayList, Collections.shuffle() 넣어서 무기 랜덤 배정 기능 제작
 		
     	while (true) { //턴 진입
@@ -62,24 +74,6 @@ public class Main {
     		//공격턴진입
 	        attacker.attack(target, attacker.getWeapon());
     		}
-    	}
-	
-	public static void main(String[] args) {
-		//main에서 캐릭터, 무기 생성하고 ConsoleGame에다 전달하는 식으로 수정
-		
-		//캐릭터 생성 (이름, HP, power, 전용무기)
-		Steve p1 = new Steve("스티브",150,15,"검");
-		Skeleton p2 = new Skeleton("스켈레톤",130,20,"활");
-		Creeper p3 = new Creeper("크리퍼",100,50,"폭탄");
-		Zombie p4 = new Zombie("좀비",180,10,"독");
-				
-				//무기 생성(이름, 내구도, power)
-		Sword w1 = new Sword("검", 3, 3);
-		Bow w2 = new Bow("활", 3, 2);
-		Bomb w3 = new Bomb("폭탄", 3, 1);
-		Poison w4 = new Poison("독", 3, 5);
-				
-		consoleGame(p1, p2, p3, p4, w1, w2, w3, w4);
 		
 		
 	}

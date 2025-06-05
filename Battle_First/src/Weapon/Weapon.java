@@ -41,12 +41,9 @@ public class Weapon {
 	}
 
     public void 무기교체(Weapon weapon){
-        if (weapon.get내구도() == 0) {
-        	System.out.printf("%s이/가 부러졌습니다! 더 강한걸로 바꿔드릴게요\n",weapon.getName());
-        	this.내구도 = 3;
-        	this.power = this.getPower()+10;
-        	System.out.println("강화된 공격력: "+this.getPower());
-        }
+        if (weapon.get내구도() == 0) 
+        	System.out.printf("%s이/가 부러졌습니다! 이제 사용할 수 없어요!",weapon.getName());
+   
     }
 
 	

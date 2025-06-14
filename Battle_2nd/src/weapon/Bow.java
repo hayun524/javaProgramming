@@ -6,6 +6,7 @@ public class Bow extends Weapon implements Attackable {
 	@Override
 	public void attackMotion() {
 		// TODO Auto-generated method stub
+		System.out.println("활 겨누기!");
 		
 	}
 	

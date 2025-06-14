@@ -26,6 +26,10 @@ public class Player {
         this.ImgFile2 = ImgFile2;
     }
     
+    public String getImageName() {
+        return ImgFile1;
+    }
+    
     public String getName() {
 		return name;
 	}
@@ -35,7 +39,7 @@ public class Player {
 	}
 
 	public int getHp() {
-		return hp;
+		return this.hp;
 	}
 
 	public void setHp(int hp) {
@@ -113,7 +117,8 @@ public class Player {
 	        return;
 	    }
 
-	    System.out.println("사용한 무기: " + weapon.getName());
+	    System.out.println("사용한 무기: " + weapon.getName()+"\n");
+	    weapon.attackMotion();
 	    System.out.printf("현재 %s의 내구도: %d\n", weapon.getName(), weapon.get내구도());
 
 	    int damage = 0;

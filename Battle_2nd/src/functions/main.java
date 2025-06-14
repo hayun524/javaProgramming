@@ -21,7 +21,7 @@ public class main {
 	public static void ConsoleGame(Player p1,Player p2,Player p3,Player p4,
 			Weapon w1, Weapon w2, Weapon w3, Weapon w4) {
 		
-		//무기, 몬스터 리스트 생성
+				//무기, 몬스터 리스트 생성
 				ArrayList<Weapon> WeaponPool =
 		  	          new ArrayList<>(Arrays.asList(w1,w2,w3,w4));
 				
@@ -70,11 +70,8 @@ public class main {
 
 			        Player attacker = p1; //공격자는 항상 스티브
 			        Player target = aliveMonsters.get(0);
-			        // 사진 변경
-			        //monsterNameLabel.setText(target.getName());
-					
+			      
 					//싸우기
-
 			        p1.attack(p1, target, p1.getWeapon());
 
 			        // 몬스터가 무작위 무기 장착하고 반격

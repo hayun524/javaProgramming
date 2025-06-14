@@ -31,9 +31,12 @@ public class UI_first extends JFrame {
 	private Player p2;
 	private Player target;
 	private Player attacker;
-	private JProgressBar hpValue;
+	
+	private JLabel hpValue;
+	private JProgressBar progressBar_1;
 	private JProgressBar MonsterHP;
 	private JLabel monsterImageLabel;
+	protected Weapon weapon;
 	
 
 	/**
@@ -65,49 +68,56 @@ public class UI_first extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 	
-		JLabel lblNewLabel_1 = new JLabel("스티브");
-		lblNewLabel_1.setBounds(130, 287, 36, 15);
-		contentPane.add(lblNewLabel_1);
+		JLabel SteveName = new JLabel("스티브");
+		SteveName.setBounds(130, 287, 36, 15);
+		contentPane.add(SteveName);
 		
-		JButton btnNewButton = new JButton("공격하기");
-		btnNewButton.setForeground(SystemColor.desktop);
-		btnNewButton.setBackground(Color.RED);
-		btnNewButton.addActionListener(new ActionListener() {
+		JLabel SteveImage = new JLabel();
+		SteveImage.setIcon(new ImageIcon(UI_first.class.getResource("/images/스티브.png")));
+		SteveImage.setBounds(30, 12, 213, 290);
+		contentPane.add(SteveImage);
+		
+		JButton attackButton = new JButton("공격하기");
+		attackButton.setForeground(SystemColor.desktop);
+		attackButton.setBackground(Color.RED);
+		attackButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//공격한다고 출력해주고
-				//hp깎고(attack 실행)
-				//bar에 반영
-				//사망처리(사진변경)
+				//공격버튼 눌리면 실행되어야 할 것 적기
+				System.out.println("공격 버튼 눌림!");
+				p1.attack(attacker, target, weapon);
 
+				// 공격 후 HP 갱신
+				hpValue.setText(Integer.toString(target.getHp()));
+				progressBar_1.setValue(target.getHp());
 				
 			}
 		});
-		btnNewButton.setBounds(30, 453, 103, 23);
-		btnNewButton.setHorizontalAlignment(SwingConstants.LEADING);
-		contentPane.add(btnNewButton);
+		attackButton.setBounds(30, 453, 103, 23);
+		attackButton.setHorizontalAlignment(SwingConstants.LEADING);
+		contentPane.add(attackButton);
 		
-		JButton btnNewButton_1 = new JButton("능력 사용");
-		btnNewButton_1.setForeground(Color.WHITE);
-		btnNewButton_1.setBackground(Color.BLUE);
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton AbilityButton = new JButton("능력 사용");
+		AbilityButton.setForeground(Color.WHITE);
+		AbilityButton.setBackground(Color.BLUE);
+		AbilityButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				//능력버튼 눌리면 실행되어야할 것 적기
+				System.out.println("능력 버튼 눌림!");
+				
 			}
 		});
-		btnNewButton_1.setBounds(156, 453, 103, 23);
-		contentPane.add(btnNewButton_1);
+		AbilityButton.setBounds(156, 453, 103, 23);
+		contentPane.add(AbilityButton);
 		
-		hpValue = new JProgressBar();
-		hpValue.setBounds(30, 327, 229, 14);
-		hpValue.setValue(100);                   // 초기값 (초기 체력 0)
-		hpValue.setStringPainted(true);       // 숫자 체력도 막대 위에 표시되게 함
-		contentPane.add(hpValue);
-		
-		JLabel lblNewLabel = new JLabel();
-		lblNewLabel.setIcon(new ImageIcon(UI_first.class.getResource("/images/스티브.png")));
-		lblNewLabel.setBounds(30, 12, 213, 290);
-		contentPane.add(lblNewLabel);
-		
+		JProgressBar progressBar_1 = new JProgressBar();
+		progressBar_1.setBounds(49, 327, 194, 14);
+		contentPane.add(progressBar_1);
+
+		hpValue = new JLabel("0");
+        hpValue.setBounds(140, 312, 14, 42);
+        contentPane.add(hpValue);
 		
 		MonsterHP = new JProgressBar();
 		MonsterHP.setBounds(376, 327, 229, 14);
@@ -154,9 +164,11 @@ public class UI_first extends JFrame {
 		btnNewButton_2_3.setBounds(170, 403, 62, 23);
 		contentPane.add(btnNewButton_2_3);
 		
-		JProgressBar progressBar = new JProgressBar();
-		progressBar.setBounds(386, 327, 229, 14);
-		contentPane.add(progressBar);
+		
+		
+		JProgressBar progressBar_2 = new JProgressBar();
+		progressBar_2.setBounds(406, 327, 194, 14);
+		contentPane.add(progressBar_2);
 		
 	}
 
@@ -170,31 +182,17 @@ public class UI_first extends JFrame {
 		
 		this.p1 = p1;
 		this.p2 = p2;
-		this.target = target; 
+		
 		
 		// 플레이어 이름, 이미지, HP 반영
+		
 		
 	    // p1(스티브) UI 반영
 	    hpValue.setValue(p1.getHp());
 	    
 	    // p2(몬스터) UI 반영
-	    MonsterHP.setValue(p2.getHp());
-	    
-		String monsterName = p2.getName();
-		ImageIcon monsterIcon;
-		
-		switch(monsterName) {
-		    case "스켈레톤":
-		        monsterIcon = new ImageIcon(UI_first.class.getResource("/images/스켈레톤.png"));
-		        break;
-		    case "좀비":
-		        monsterIcon = new ImageIcon(UI_first.class.getResource("/images/좀비.png"));
-		        break;
-		    default:
-		        monsterIcon = new ImageIcon(UI_first.class.getResource("/images/크리퍼.png"));
-		        break;
-		}
-
-		monsterImageLabel.setIcon(monsterIcon);
+	    MonsterHP.setValue(target.getHp());
+	 
 	}
+		
 }
